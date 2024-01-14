@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ServiceBors.Pages.ServicesPage"
+             Title="Services Page">
+
+    <FlexLayout Direction="Column">
+        <VerticalStackLayout Padding="10" FlexLayout.Basis="400" BackgroundColor="Beige">
+            <Entry x:Name="serviceNameEntryField" Placeholder="Service Name" />
+            <Entry x:Name="serviceDescriptionEntryField" Placeholder="Service Description" />
+            <Entry x:Name="servicePriceEntryField" Placeholder="Service Price" />
+            <Button x:Name="saveButton" Text="Save" Clicked="saveButton_Clicked" />
+        </VerticalStackLayout>
+
+        <ListView x:Name="listView" FlexLayout.Grow="1" HasUnevenRows="True" ItemTapped="listView_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="5">
+                            <Label Text="{Binding ServiceName}" FontSize="17" FontAttributes="Bold" />
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="{Binding ServiceDescription}" />
+                                <Label Grid.Column="2" Text="{Binding ServicePrice}" />
+                            </Grid>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </FlexLayout>
+
+</ContentPage>

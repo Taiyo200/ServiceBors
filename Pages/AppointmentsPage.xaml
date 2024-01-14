@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ServiceBors.Pages.AppointmentsPage"
+             Title="AppointmentsPage">
+
+    <FlexLayout Direction="Column">
+        <VerticalStackLayout Padding="10" FlexLayout.Basis="400" BackgroundColor="Beige">
+            <Entry x:Name="nameEntryField" Placeholder="Name" />
+            <Entry x:Name="carplateEntryField" Placeholder="Car Plate" />
+            <Entry x:Name="carmodelEntryField" Placeholder="Car Model" />
+            <Entry x:Name="serviceEntryField" Placeholder="Service" />
+            <Entry x:Name="issuesEntryField" Placeholder="Issues" />
+            <Button x:Name="saveButton" Text="Save" Clicked="saveButton_Clicked" />
+        </VerticalStackLayout>
+
+        <ListView x:Name="listView" FlexLayout.Grow="1" HasUnevenRows="True" ItemTapped="listView_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="5">
+                            <Label Text="{Binding Name}" FontSize="17" FontAttributes="Bold" />
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="{Binding CarPlate}" />
+                                <Label Grid.Column="2" Text="{Binding CarModel}" />
+                                <Label Grid.Column="4" Text="{Binding Service}" />
+                                <Label Grid.Column="6" Text="{Binding Issue}" />
+                            </Grid>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </FlexLayout>
+
+</ContentPage>
