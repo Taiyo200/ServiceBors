@@ -18,5 +18,9 @@ namespace ServiceBors.DB
 
         [Column("partnerType")]
         public string PartnerType { get; set; }
+        [Column("service")]
+        public string Service { get; set; }
+        [Column("partnerAddress")]
+        public string PartnerAddress { get; set; }
     }
 }

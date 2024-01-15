@@ -2,14 +2,14 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ServiceBors.Pages.AppointmentsPage"
-             Title="AppointmentsPage">
+             Title="Appointments Page">
 
     <FlexLayout Direction="Column">
-        <VerticalStackLayout Padding="10" FlexLayout.Basis="400" BackgroundColor="Beige">
+        <VerticalStackLayout Padding="10" FlexLayout.Basis="400" BackgroundColor="Black">
             <Entry x:Name="nameEntryField" Placeholder="Name" />
             <Entry x:Name="carplateEntryField" Placeholder="Car Plate" />
             <Entry x:Name="carmodelEntryField" Placeholder="Car Model" />
-            <Entry x:Name="serviceEntryField" Placeholder="Service" />
+            <Picker x:Name="servicePicker" Title="Select Service" />
             <Entry x:Name="issuesEntryField" Placeholder="Issues" />
             <Button x:Name="saveButton" Text="Save" Clicked="saveButton_Clicked" />
         </VerticalStackLayout>
@@ -20,17 +20,10 @@
                     <ViewCell>
                         <StackLayout Padding="5">
                             <Label Text="{Binding Name}" FontSize="17" FontAttributes="Bold" />
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Text="{Binding CarPlate}" />
-                                <Label Grid.Column="2" Text="{Binding CarModel}" />
-                                <Label Grid.Column="4" Text="{Binding Service}" />
-                                <Label Grid.Column="6" Text="{Binding Issue}" />
-                            </Grid>
+                            <Label Text="{Binding CarPlate}" />
+                            <Label Text="{Binding CarModel}" />
+                            <Label Text="{Binding Service}" />
+                            <Label Text="{Binding Issue}" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

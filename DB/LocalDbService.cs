@@ -87,5 +87,7 @@ namespace ServiceBors.DB
             await _connection.DeleteAsync(partner);
         }
 
+
+
     }
 }

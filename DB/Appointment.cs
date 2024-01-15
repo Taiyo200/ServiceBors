@@ -19,6 +19,10 @@ namespace ServiceBors.DB
         public string Service { get; set; }
         [Column("issue")]
         public string Issue { get; set; }
+        public override string ToString()
+        {
+            return Service; 
+        }
 
     }
 }

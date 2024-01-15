@@ -11,7 +11,17 @@ namespace ServiceBors.Pages
         {
             InitializeComponent();
             _dbService = dbService;
-            Task.Run(async () => listView.ItemsSource = await _dbService.GetPartners());
+            Task.Run(async () =>
+            {
+                listView.ItemsSource = await _dbService.GetPartners();
+                PopulateServicePicker();
+            });
+        }
+
+        private async void PopulateServicePicker()
+        {
+            var services = await _dbService.GetServices();
+            servicePicker.ItemsSource = services;
         }
 
         private async void saveButton_Clicked(object sender, EventArgs e)
@@ -22,6 +32,7 @@ namespace ServiceBors.Pages
                 {
                     PartnerName = partnerNameEntryField.Text,
                     PartnerLocation = partnerLocationEntryField.Text,
+                    Service = servicePicker.SelectedItem as string,
                     PartnerType = partnerTypeEntryField.Text,
                 });
             }
@@ -33,6 +44,8 @@ namespace ServiceBors.Pages
                     PartnerName = partnerNameEntryField.Text,
                     PartnerLocation = partnerLocationEntryField.Text,
                     PartnerType = partnerTypeEntryField.Text,
+                    Service = servicePicker.SelectedItem as string,
+
                 });
                 _editPartnerId = 0;
             }
@@ -40,6 +53,8 @@ namespace ServiceBors.Pages
             partnerNameEntryField.Text = string.Empty;
             partnerLocationEntryField.Text = string.Empty;
             partnerTypeEntryField.Text = string.Empty;
+            servicePicker.SelectedIndex = -1;
+
 
             listView.ItemsSource = await _dbService.GetPartners();
         }
@@ -56,6 +71,8 @@ namespace ServiceBors.Pages
                     partnerNameEntryField.Text = partner.PartnerName;
                     partnerLocationEntryField.Text = partner.PartnerLocation;
                     partnerTypeEntryField.Text = partner.PartnerType;
+                    servicePicker.SelectedItem = partner.Service;
+
                     break;
 
                 case "Delete":
@@ -64,5 +81,21 @@ namespace ServiceBors.Pages
                     break;
             }
         }
+        private void locationButton_Clicked(object sender, EventArgs e)
+        {
+            var partner = _dbService.GetPartnerById(_editPartnerId).Result;
+
+            if (partner != null && !string.IsNullOrWhiteSpace(partner.PartnerLocation))
+            {
+                var locationUrl = $"https://www.google.com/maps/search/?api=1&query={Uri.EscapeDataString(partner.PartnerLocation)}";
+
+                Launcher.OpenAsync(new Uri(locationUrl));
+            }
+            else
+            {
+                DisplayAlert("Error", "Partner location not available.", "OK");
+            }
+        }
+
     }
 }

@@ -7,9 +7,34 @@
              BackgroundColor="{DynamicResource PageBackgroundColor}"
              x:Class="ServiceBors.WelcomePage">
 
-    <StackLayout>
-        <Button Text="Appointments" Clicked="OnAppointmentsClicked"/>
-        <Button Text="Services" Clicked="OnServicesClicked"/>
-        <Button Text="Partner" Clicked="OnPartnersClicked"/>
+    <StackLayout Spacing="20" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+        <Image Source="header.png" HeightRequest="100" Aspect="AspectFit"/>
+
+        <Label Text="Welcome to ServiceBors"
+               FontSize="24"
+               FontAttributes="Bold"
+               TextColor="#333333"
+               HorizontalTextAlignment="Center"/>
+
+        <Button Text="Appointments"
+                Clicked="OnAppointmentsClicked"
+                BackgroundColor="#4CAF50"
+                TextColor="White"
+                FontSize="18"
+                CornerRadius="10"/>
+
+        <Button Text="Services"
+                Clicked="OnServicesClicked"
+                BackgroundColor="#3498db"
+                TextColor="White"
+                FontSize="18"
+                CornerRadius="10"/>
+
+        <Button Text="Partner"
+                Clicked="OnPartnersClicked"
+                BackgroundColor="#f8de7e"
+                TextColor="White"
+                FontSize="18"
+                CornerRadius="10"/>
     </StackLayout>
 </ContentPage>

@@ -5,7 +5,7 @@
              Title="Services Page">
 
     <FlexLayout Direction="Column">
-        <VerticalStackLayout Padding="10" FlexLayout.Basis="400" BackgroundColor="Beige">
+        <VerticalStackLayout Padding="10" FlexLayout.Basis="400" BackgroundColor="Black">
             <Entry x:Name="serviceNameEntryField" Placeholder="Service Name" />
             <Entry x:Name="serviceDescriptionEntryField" Placeholder="Service Description" />
             <Entry x:Name="servicePriceEntryField" Placeholder="Service Price" />

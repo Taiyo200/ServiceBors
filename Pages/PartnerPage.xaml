@@ -5,10 +5,11 @@
              Title="Partners Page">
 
     <FlexLayout Direction="Column">
-        <VerticalStackLayout Padding="10" FlexLayout.Basis="400" BackgroundColor="Beige">
+        <VerticalStackLayout Padding="10" FlexLayout.Basis="400" BackgroundColor="Black">
             <Entry x:Name="partnerNameEntryField" Placeholder="Partner Name" />
             <Entry x:Name="partnerLocationEntryField" Placeholder="Partner Location" />
             <Entry x:Name="partnerTypeEntryField" Placeholder="Partner Type" />
+            <Picker x:Name="servicePicker" Title="Select Service" />
             <Button x:Name="saveButton" Text="Save" Clicked="saveButton_Clicked" />
         </VerticalStackLayout>
 
@@ -20,6 +21,9 @@
                             <Label Text="{Binding PartnerName}" FontSize="17" FontAttributes="Bold" />
                             <Label Text="{Binding PartnerLocation}" />
                             <Label Text="{Binding PartnerType}" />
+                            <Label Text="{Binding Service}" />
+                            <Button x:Name="locationButton" Text="Location" Clicked="locationButton_Clicked" />
+
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
